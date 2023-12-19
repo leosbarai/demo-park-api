@@ -30,7 +30,7 @@ public class UsuarioService {
     @Transactional(readOnly = true)
     public Usuario buscarPorId(Long id) {
         return usuarioRepository.findById(id).orElseThrow(
-                () -> new EntityNotFoundException(String.format("Usuario id=%s não encontrado", id))
+                () -> new EntityNotFoundException(String.format("Usuário id=%s não encontrado", id))
         );
     }
 
