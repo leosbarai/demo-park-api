@@ -14,14 +14,16 @@ import org.springframework.validation.FieldError;
 @ToString
 public class ErrorMessage {
 
-    private final String path;
-    private final String method;
-    private final int status;
-    private final String statusText;
-    private final String message;
+    private String path;
+    private String method;
+    private int status;
+    private String statusText;
+    private String message;
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    @ToString.Exclude
     private Map<String, String> errors;
+
+    public ErrorMessage() {
+    }
 
     public ErrorMessage(HttpServletRequest request, HttpStatus status, String message) {
         this.path = request.getRequestURI();
@@ -46,4 +48,5 @@ public class ErrorMessage {
             this.errors.put(fieldError.getField(), fieldError.getDefaultMessage());
         }
     }
+
 }
